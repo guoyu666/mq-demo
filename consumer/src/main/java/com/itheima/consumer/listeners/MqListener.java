@@ -24,4 +24,36 @@ public class MqListener {
         System.err.println("消费者2接收到消息：【" + message + "】");
         Thread.sleep(200);
     }
+
+    @RabbitListener(queues = "fanout.queue1")
+    public void listenFanoutQueue1(String message) throws InterruptedException {
+        System.out.println("消费者1接收到广播消息：【" + message + "】");
+    }
+
+    @RabbitListener(queues = "fanout.queue2")
+    public void listenFanoutQueue2(String message) throws InterruptedException {
+        System.out.println("消费者2接收到广播消息：【" + message + "】");
+    }
+
+    @RabbitListener(queues = "direct.queue1")
+    public void listenDirectQueue1(String message) throws InterruptedException {
+        System.out.println("消费者1接收到直连消息：【" + message + "】");
+    }
+
+    @RabbitListener(queues = "direct.queue2")
+    public void listenDirectQueue2(String message) throws InterruptedException {
+        System.out.println("消费者2接收到直连消息：【" + message + "】");
+    }
+
+    @RabbitListener(queues = "topic.queue1")
+    public void listenTopicQueue1(String message) throws InterruptedException {
+
+        System.out.println("消费者1接收到主题消息：【" + message + "】");
+    }
+
+    @RabbitListener(queues = "topic.queue2")
+    public void listenTopicQueue2(String message) throws InterruptedException {
+
+        System.out.println("消费者2接收到主题消息：【" + message + "】");
+    }
 }

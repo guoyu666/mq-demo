@@ -30,4 +30,25 @@ public class SpringAMQPTest {
             rabbitTemplate.convertAndSend(queueName, message);
         }
     }
+
+    @Test
+    public void testFanout() {
+        String exchangeName = "hmall.fanout";
+        String message = "Hello, Fanout!";
+        rabbitTemplate.convertAndSend(exchangeName, "", message);
+    }
+
+    @Test
+    public void testSendDirect() {
+        String exchangeName = "hmall.direct";
+        String message = "Hello, direct!";
+        rabbitTemplate.convertAndSend(exchangeName, "blue", message);
+    }
+
+    @Test
+    public void testSendTopic() {
+        String exchangeName = "hmall.topic";
+        String message = "中国新闻！！天气不错";
+        rabbitTemplate.convertAndSend(exchangeName, "china.weather", message);
+    }
 }
