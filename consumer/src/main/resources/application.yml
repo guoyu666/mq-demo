@@ -1,0 +1,13 @@
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+spring:
+  rabbitmq:
+    host: 192.168.255.128
+    port: 5672
+    virtual-host: /hmall
+    username: hmall
+    password: 13801874064guoyu
+    listener:
+      direct:
+        prefetch: 1 # 确保同一时刻最多投递给消费者1条消息，每次只能获取一条消息，处理完成才能获取下一个消息
