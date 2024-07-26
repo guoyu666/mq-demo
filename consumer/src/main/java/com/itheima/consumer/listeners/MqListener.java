@@ -8,6 +8,8 @@ import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Slf4j
 @Component
 public class MqListener {
@@ -59,5 +61,11 @@ public class MqListener {
     public void listenTopicQueue2(String message) throws InterruptedException {
 
         System.out.println("消费者2接收到主题消息：【" + message + "】");
+    }
+
+    @RabbitListener(queues = "object.queue")
+    public void listenObjectQueue(Map<String,Object> message) throws InterruptedException {
+
+        System.out.println("消费者接收到object.queue的消息：【" + message + "】");
     }
 }
